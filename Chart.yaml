@@ -1,0 +1,7 @@
+apiVersion: v1
+name: jitsi-meet
+version: 1.0.0
+appVersion: 0.0.1
+description: Free open-source video conferencing for web & mobile. Make a call, launch on your own servers in minutes, integrate into your app, or develop something new. 
+sources:
+  - https://github.com/quadeare/helm-jitsi

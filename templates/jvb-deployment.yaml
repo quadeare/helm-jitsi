@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jitsi
+    stack: jvb
+  name: jvb
+spec:
+  selector:
+    matchLabels:
+      app: jitsi
+      stack: jvb
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: jitsi
+        stack: jvb
+    spec:
+      containers:
+      - env:
+        - name: XMPP_SERVER
+          value: prosody
+        - name: DOCKER_HOST_ADDRESS
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: XMPP_DOMAIN
+          value: meet.jitsi
+        - name: XMPP_AUTH_DOMAIN
+          value: auth.meet.jitsi
+        - name: JVB_PORT
+          value: "30000"
+        - name: JVB_TCP_PORT
+          value: "30001"
+        - name: JVB_AUTH_USER
+          value: "{{ .Values.jvb.authUser }}"
+        - name: JVB_AUTH_PASSWORD
+          value: "{{ .Values.jvb.authPassword }}"
+        - name: JVB_BREWERY_MUC
+          value: jvbbrewery
+        - name: XMPP_INTERNAL_MUC_DOMAIN
+          value: internal-muc.meet.jitsi
+        - name: JVB_STUN_SERVERS
+          value: stun.l.google.com:19302,stun1.l.google.com:19302,stun2.l.google.com:19302
+        - name: JICOFO_AUTH_USER
+          value: "{{ .Values.jicofo.authUser }}"
+        - name: TZ
+          value: "{{ .Values.timezone }}"
+        image: "{{ .Values.jvb.image }}"
+        imagePullPolicy: "{{ .Values.jvb.imagePullPolicy }}"
+        name: jvb
+        ports:
+        - containerPort: 30000
+          protocol: UDP
+        - containerPort: 30001
+        resources: {}
+      restartPolicy: Always
+status: {}
