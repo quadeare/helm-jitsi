@@ -28,16 +28,23 @@ ingress:
 jicofo:
   image: quadeare/jitsi-jicofo:stable
   imagePullPolicy: IfNotPresent
-  componentSecret: s3cr37
+  componentSecret: <Set password here>
   authUser: focus
-  authPassword: passw0rd
+  authPassword: <Set password here>
 
 jvb:
   image: quadeare/jitsi-jvb:stable
   imagePullPolicy: IfNotPresent
-  componentSecret: s3cr37
+  componentSecret: <Set password here>
   authUser: focus
-  authPassword: passw0rd
+  authPassword: <Set password here>
+
+jigasi:
+  xmppPassword: <Set password here>
+
+jibri:
+  recorderPassword: <Set password here>
+  xmppPassword: <Set password here>
 
 prosody:
   image: quadeare/jitsi-prosody:stable

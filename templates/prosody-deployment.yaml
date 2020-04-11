@@ -21,6 +21,12 @@ spec:
     spec:
       containers:
       - env:
+        - name: JIBRI_XMPP_PASSWORD
+          value: "{{ .Values.jibri.xmppPassword }}"
+        - name: JIBRI_RECORDER_PASSWORD
+          value: "{{ .Values.jibri.recorderPassword }}"
+        - name: JIGASI_XMPP_PASSWORD
+          value: "{{ .Values.jigasi.xmppPassword }}"
         - name: XMPP_DOMAIN
           value: meet.jitsi
         - name: XMPP_AUTH_DOMAIN
