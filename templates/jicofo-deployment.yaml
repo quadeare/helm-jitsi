@@ -21,6 +21,18 @@ spec:
     spec:
       containers:
       - env:
+        - name: JICOFO_AUTH_USER
+          value: "{{ .Values.jicofo.authUser }}"
+        - name: JICOFO_COMPONENT_SECRET
+          value: "{{ .Values.jicofo.componentSecret }}"
+        - name: JICOFO_AUTH_PASSWORD
+          value: "{{ .Values.jicofo.authPassword }}"
+        - name: JVB_AUTH_USER
+          value: "{{ .Values.jvb.authUser }}"
+        - name: JVB_COMPONENT_SECRET
+          value: "{{ .Values.jvb.componentSecret }}"
+        - name: JVB_AUTH_PASSWORD
+          value: "{{ .Values.jvb.authPassword }}"
         - name: JIBRI_XMPP_PASSWORD
           value: "{{ .Values.jibri.xmppPassword }}"
         - name: JIBRI_RECORDER_PASSWORD
@@ -33,12 +45,6 @@ spec:
           value: meet.jitsi
         - name: XMPP_AUTH_DOMAIN
           value: auth.meet.jitsi
-        - name: JICOFO_COMPONENT_SECRET
-          value: "{{ .Values.jicofo.componentSecret }}"
-        - name: JICOFO_AUTH_USER
-          value: "{{ .Values.jicofo.authUser }}"
-        - name: JICOFO_AUTH_PASSWORD
-          value: "{{ .Values.jicofo.authPassword }}"
         - name: JVB_BREWERY_MUC
           value: jvbbrewery
         - name: XMPP_INTERNAL_MUC_DOMAIN

@@ -21,14 +21,24 @@ spec:
     spec:
       containers:
       - env:
+        - name: JICOFO_AUTH_USER
+          value: "{{ .Values.jicofo.authUser }}"
+        - name: JICOFO_COMPONENT_SECRET
+          value: "{{ .Values.jicofo.componentSecret }}"
+        - name: JICOFO_AUTH_PASSWORD
+          value: "{{ .Values.jicofo.authPassword }}"
+        - name: JVB_AUTH_USER
+          value: "{{ .Values.jvb.authUser }}"
+        - name: JVB_COMPONENT_SECRET
+          value: "{{ .Values.jvb.componentSecret }}"
+        - name: JVB_AUTH_PASSWORD
+          value: "{{ .Values.jvb.authPassword }}"
         - name: JIBRI_XMPP_PASSWORD
           value: "{{ .Values.jibri.xmppPassword }}"
         - name: JIBRI_RECORDER_PASSWORD
           value: "{{ .Values.jibri.recorderPassword }}"
         - name: JIGASI_XMPP_PASSWORD
           value: "{{ .Values.jigasi.xmppPassword }}"
-        - name: JICOFO_AUTH_USER
-          value: "{{ .Values.jicofo.authUser }}"
         - name: XMPP_DOMAIN
           value: meet.jitsi
         - name: XMPP_AUTH_DOMAIN

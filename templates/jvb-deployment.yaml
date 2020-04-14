@@ -27,6 +27,18 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.hostIP
+        - name: JICOFO_AUTH_USER
+          value: "{{ .Values.jicofo.authUser }}"
+        - name: JICOFO_COMPONENT_SECRET
+          value: "{{ .Values.jicofo.componentSecret }}"
+        - name: JICOFO_AUTH_PASSWORD
+          value: "{{ .Values.jicofo.authPassword }}"
+        - name: JVB_AUTH_USER
+          value: "{{ .Values.jvb.authUser }}"
+        - name: JVB_COMPONENT_SECRET
+          value: "{{ .Values.jvb.componentSecret }}"
+        - name: JVB_AUTH_PASSWORD
+          value: "{{ .Values.jvb.authPassword }}"
         - name: JIBRI_XMPP_PASSWORD
           value: "{{ .Values.jibri.xmppPassword }}"
         - name: JIBRI_RECORDER_PASSWORD
@@ -41,18 +53,12 @@ spec:
           value: "30000"
         - name: JVB_TCP_PORT
           value: "30001"
-        - name: JVB_AUTH_USER
-          value: "{{ .Values.jvb.authUser }}"
-        - name: JVB_AUTH_PASSWORD
-          value: "{{ .Values.jvb.authPassword }}"
         - name: JVB_BREWERY_MUC
           value: jvbbrewery
         - name: XMPP_INTERNAL_MUC_DOMAIN
           value: internal-muc.meet.jitsi
         - name: JVB_STUN_SERVERS
           value: stun.l.google.com:19302,stun1.l.google.com:19302,stun2.l.google.com:19302
-        - name: JICOFO_AUTH_USER
-          value: "{{ .Values.jicofo.authUser }}"
         - name: TZ
           value: "{{ .Values.timezone }}"
         image: "{{ .Values.jvb.image }}"
